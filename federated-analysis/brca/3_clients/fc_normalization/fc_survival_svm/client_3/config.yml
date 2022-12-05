@@ -1,0 +1,58 @@
+fc_normalization:
+  input:
+    train: "train.csv"
+    test: "test.csv"
+  output:
+    train: "train_norm.csv"
+    test: "test_norm.csv"
+  format:
+    sep: ","
+    label: ["event", "tte"] # the label column is excluded from the normalization
+  split:
+    mode: "directory" # directory if cross validation was used before, else file
+    dir: "data" # data if cross-validation app was used before, else .
+  normalization: "variance"
+
+
+fc_survival_svm:
+  privacy:
+    enable_smpc: False
+  input:
+    train: "train_norm.csv"
+    test: "test_norm.csv"
+  output:
+    model: "model.pickle"
+    pred: "pred.csv"
+    test: "test_norm.csv"
+  format:
+    sep: ","
+    label_survival_time: "tte"
+    label_event: "event"
+    event_value: 1  # optional, default='1'; value of an entry in the event column when an event occurred
+    event_censored_value: 0  # optional, default='0'; value of an entry in the event column when censored
+  split:
+    mode: "directory"  # directory if cross validation was used before, else file
+    dir: "data"  # data if cross validation app was used before, else .
+  svm:
+    alpha: 0.0001  # regularization parameter
+    fit_intercept: True  # whether to fit an intercept or not
+    max_iterations: 50  # maximum number of iterations
+
+fc_survival_evaluation:
+  privacy:
+    min_concordant_pairs: 1
+  input:
+    y_test: "test_norm.csv"
+    y_pred: "pred.csv"
+  format:
+    sep: ","
+    label_survival_time: "tte"
+    label_event: "event"
+    event_value: 1  # optional, default='True'; value of an entry in the event column when an event occurred
+    event_censored_value: 0  # optional, default='False'; value of an entry in the event column when censored
+    label_predicted_time: "predicted_tte"
+  parameters:
+    objective: regression
+  split:
+    mode: "directory"  # directory if cross validation was used before, else file
+    dir: "data"  # data if cross validation app was used before, else .
