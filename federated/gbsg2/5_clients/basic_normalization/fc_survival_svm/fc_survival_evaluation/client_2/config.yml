@@ -1,0 +1,58 @@
+fc_normalization:
+  input:
+    train: "train.csv"
+    test: "test.csv"
+  output:
+    train: "train_norm.csv"
+    test: "test_norm.csv"
+  format:
+    sep: ","
+    label: ["event", "tte"]
+  split:
+    mode: "directory" 
+    dir: "data" 
+  normalization: "variance"
+
+
+fc_survival_svm:
+  privacy:
+    enable_smpc: False
+  input:
+    train: "train_norm.csv"
+    test: "test_norm.csv"
+  output:
+    model: "model.pickle"
+    pred: "pred.csv"
+    test: "test_norm.csv"
+  format:
+    sep: ","
+    label_survival_time: "tte"
+    label_event: "event"
+    event_value: 1  
+    event_censored_value: 0
+  split:
+    mode: "directory"
+    dir: "data" 
+  svm:
+    alpha: 0.0001
+    fit_intercept: True
+    max_iterations: 50
+
+fc_survival_evaluation:
+  privacy:
+    min_concordant_pairs: 1
+  input:
+    y_test: "test_norm.csv"
+    y_pred: "pred.csv"
+  format:
+    sep: ","
+    label_survival_time: "tte"
+    label_event: "event"
+    event_value: 1  
+    event_censored_value: 0  
+    label_predicted_time: "predicted_tte"
+  parameters:
+    objective: regression
+  split:
+    mode: "directory"  
+    dir: "data"

@@ -1,0 +1,87 @@
+model:
+  coefficients:
+    intercept: 6.037239891251177
+    weights:
+      afb_1: -0.007746659674608702
+      age: -0.020098331644870005
+      av3_1: -0.006918732857776673
+      bmi: 0.015539792751536228
+      chf_1: -0.016078228997673107
+      cvd_1: -0.002916141965366752
+      diasbp: 0.011068197280776631
+      gender_1: -0.005179589189038792
+      hr: -0.004366450081340828
+      los: 0.0013151922488877634
+      miord_1: -0.0004036204108308352
+      mitype_1: 0.003388671286306465
+      sho_1: -0.01756204982682876
+      sysbp: 0.009729106611327067
+  name: FederatedPureRegressionSurvivalSVM
+  optimizer:
+    fun: 0.052059585536539096
+    jac:
+    - 4.7e-07
+    - 2.4523321877703563e-07
+    - -6.89725573998351e-07
+    - -1.53328314317705e-07
+    - 1.7129837531076886e-09
+    - 3.7382661965761586e-07
+    - -1.392301516855987e-07
+    - 6.249275263919135e-07
+    - 1.1131496276328354e-06
+    - 6.106717129299166e-07
+    - -1.6920403337868442e-07
+    - -1.7078303792862626e-08
+    - 4.298385246965966e-07
+    - -2.708875879164907e-08
+    - 4.1753982935391343e-07
+    message: Optimization terminated successfully.
+    nfev: 4
+    nhev: 6
+    nit: 3
+    njev: 4
+    status: 0
+    success: true
+    x:
+    - 6.037239891251177
+    - -0.020098331644870005
+    - 0.015539792751536228
+    - 0.011068197280776631
+    - -0.004366450081340828
+    - 0.0013151922488877634
+    - 0.009729106611327067
+    - -0.007746659674608702
+    - -0.006918732857776673
+    - -0.016078228997673107
+    - -0.002916141965366752
+    - -0.005179589189038792
+    - -0.0004036204108308352
+    - 0.003388671286306465
+    - -0.01756204982682876
+  privacy:
+    privacy_technique: SMPC
+  timings:
+    config: 2.0384277510001994
+    generate_predictions: 0.09738695800024288
+    optimizer:
+      calculation_time: 0.0072022080021270085
+      idle_time: 32.31572113999846
+      total_time: 32.322923348000586
+    preprocessing: 0.0013129159997333772
+    read_data: 0.03664683300030447
+    total_until_meta_file_write: 868.6128463539999
+  training_data:
+    event_censored_value: '0'
+    event_value: '1'
+    label_event: event
+    label_survival_time: tte
+    local_file: ./data/split_1/train_norm.csv
+    n_censored: 193
+    n_samples: 333
+    split: /mnt/input/data/split_1
+  training_parameters:
+    alpha: 0.0001
+    fit_intercept: true
+    max_iter: 50
+    rank_ratio: 0
+  version: v1.0.0-alpha

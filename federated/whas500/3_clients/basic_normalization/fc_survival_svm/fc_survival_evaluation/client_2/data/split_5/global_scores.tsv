@@ -1,0 +1,3 @@
+mean c-index	0.7530317142651096
+c-index weighted by number of samples	0.7420596386612454
+c-index weighted by number of concordant pairs	0.7339030680502449

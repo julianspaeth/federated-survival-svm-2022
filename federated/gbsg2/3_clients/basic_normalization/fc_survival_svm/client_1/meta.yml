@@ -1,0 +1,72 @@
+model:
+  coefficients:
+    intercept: 6.9258518437475445
+    weights:
+      age: 0.002825709024799131
+      estrec: 0.003462530285442158
+      horTh_yes: 0.00520471930588623
+      menostat_Post: 0.0007867979616671975
+      pnodes: -0.011089711068197493
+      progrec: 0.005801449111295558
+      tgrade_II: 0.0017396144516464839
+      tgrade_III: -0.007124338222185827
+      tsize: -0.0069446038999158395
+  name: FederatedPureRegressionSurvivalSVM
+  optimizer:
+    fun: 0.013343676182736183
+    jac:
+    - -8.993916549016046e-09
+    - -2.63645353664084e-06
+    - -2.47852698882561e-06
+    - 6.509663461537474e-07
+    - -7.802095073694906e-07
+    - 1.7929461254258608e-06
+    - -1.2729341806513167e-06
+    - -9.523136203376265e-07
+    - 1.531878177062464e-06
+    - 8.09990309866282e-07
+    message: Optimization terminated successfully.
+    nfev: 4
+    nhev: 8
+    nit: 3
+    njev: 4
+    status: 0
+    success: true
+    x:
+    - 6.9258518437475445
+    - 0.002825709024799131
+    - 0.003462530285442158
+    - -0.011089711068197493
+    - 0.005801449111295558
+    - -0.0069446038999158395
+    - 0.00520471930588623
+    - 0.0007867979616671975
+    - 0.0017396144516464839
+    - -0.007124338222185827
+  privacy:
+    privacy_technique: None
+  timings:
+    config: 3.030185001999598
+    generate_predictions: 0.045585541000036756
+    optimizer:
+      calculation_time: 0.007731373998467461
+      idle_time: 38.38710726800127
+      total_time: 38.39483864199974
+    preprocessing: 0.00048629199955030344
+    read_data: 0.062386540999796125
+    total_until_meta_file_write: 63.1272628200004
+  training_data:
+    event_censored_value: '0'
+    event_value: '1'
+    label_event: event
+    label_survival_time: tte
+    local_file: OVERALL/train_norm.csv
+    n_censored: 387
+    n_samples: 686
+    split: OVERALL
+  training_parameters:
+    alpha: 0.0001
+    fit_intercept: true
+    max_iter: 50
+    rank_ratio: 0
+  version: v1.0.0-alpha
